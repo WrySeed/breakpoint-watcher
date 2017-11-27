@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <watcher-layout 
-      :currentBreakpoint="currentBreakpoint"/>
+      :currentBreakpoint="currentBreakpoint"
+      :breakpoints="breakpoints"/>
   </div>
 </template>
 
@@ -23,7 +24,11 @@ export default {
       currentBreakpoint: {
         format: defaultBreakpoint.format,
         color: defaultBreakpoint.color
-      }
+      },
+      breakpoints: [
+        { format: 'tablet', size: 1024 },
+        { format: 'mobile', size: 640 }
+      ]
     }
   }
 }
