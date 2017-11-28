@@ -5,12 +5,27 @@
                 class="layout__title"
                 :style="{ backgroundColor: currentBreakpoint.color }">{{ currentBreakpoint.format }}</h1>
             <div class="layout__inner">
-                <ul>
-                    <breakpoint
-                        v-for="breakpoint in breakpoints" :key="breakpoint.id"
-                        v-bind="breakpoint"
-                        />
-                </ul>
+                <div class="layout__box layout__box--list">
+                    <p>Your defined breakpoints :</p>
+                    <ul>
+                        <breakpoint
+                            v-for="breakpoint in breakpoints" :key="breakpoint.id"
+                            v-bind="breakpoint"
+                            />
+                    </ul>
+                </div>
+                <form 
+                    v-on:submit.prevent="addNewBreakpoint"
+                    class="layout__box layout__box--form">
+                    <p>Add a new breakpoint :</p>
+                    <input type="text" 
+                        v-model="newBreakpoint.format"
+                        placeholder="Screen or device format" />
+                    <input type="text" 
+                        v-model.number="newBreakpoint.size"
+                        placeholder="Screen or device size" />
+                    <button type="submit">Add breakpoint</button>
+                </form>
             </div>
         </div>
     </section>
@@ -27,6 +42,20 @@ export default {
   },
   components: {
     Breakpoint
+  },
+  methods: {
+    addNewBreakpoint: function () {
+      let breakpoint = this.newBreakpoint
+      this.breakpoints.push(breakpoint)
+    }
+  },
+  data () {
+    return {
+      newBreakpoint: {
+        format: '',
+        size: ''
+      }
+    }
   }
 }
 </script>
@@ -47,4 +76,8 @@ export default {
     &__title
         padding: 2.2rem
         font-size: 2rem
+    &__box
+        p
+            margin-bottom: 1rem
+            font-size: 1.8rem
 </style>
