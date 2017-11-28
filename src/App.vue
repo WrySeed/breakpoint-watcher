@@ -11,7 +11,7 @@ import WatcherLayout from './components/WatcherLayout'
 
 const defaultBreakpoint = {
   format: 'Desktop',
-  color: '#f2f2f2'
+  color: '#ef5350'
 }
 
 export default {
@@ -26,8 +26,8 @@ export default {
         color: defaultBreakpoint.color
       },
       breakpoints: [
-        { format: 'tablet', size: 1024 },
-        { format: 'mobile', size: 640 }
+        { format: 'tablet', size: 1024, color: '#9ccc65' },
+        { format: 'mobile', size: 640, color: '#ffee58' }
       ]
     }
   }

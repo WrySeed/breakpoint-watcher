@@ -24,6 +24,8 @@
                     <input type="text" 
                         v-model.number="newBreakpoint.size"
                         placeholder="Screen or device size" />
+                    <input type="color"
+                        v-model="newBreakpoint.color" />
                     <button type="submit">Add breakpoint</button>
                 </form>
             </div>
@@ -53,7 +55,8 @@ export default {
     return {
       newBreakpoint: {
         format: '',
-        size: ''
+        size: '',
+        color: ''
       }
     }
   }
@@ -77,7 +80,7 @@ export default {
         padding: 2.2rem
         font-size: 2rem
     &__box
+        margin-bottom: 1.6rem
         p
-            margin-bottom: 1rem
             font-size: 1.8rem
 </style>
