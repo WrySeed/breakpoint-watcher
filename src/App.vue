@@ -2,7 +2,7 @@
   <div id="app">
     <watcher-layout 
       :currentBreakpoint="currentBreakpoint"
-      :breakpoints="breakpoints"/>
+      :breakpoints="orderedBreakpoints"/>
   </div>
 </template>
 
@@ -19,6 +19,21 @@ export default {
   components: {
     WatcherLayout
   },
+  computed: {
+    orderedBreakpoints: function () {
+      return this.breakpoints.sort((a, b) => {
+        if (a.size > b.size) {
+          return -1
+        }
+
+        if (a.size < b.size) {
+          return 1
+        }
+
+        return 0
+      })
+    }
+  },
   data () {
     return {
       currentBreakpoint: {
@@ -26,8 +41,8 @@ export default {
         color: defaultBreakpoint.color
       },
       breakpoints: [
-        { format: 'tablet', size: 1024, color: '#9ccc65' },
-        { format: 'mobile', size: 640, color: '#ffee58' }
+        { format: 'mobile', size: 640, color: '#ffee58' },
+        { format: 'tablet', size: 1024, color: '#9ccc65' }
       ]
     }
   }

@@ -2,7 +2,7 @@
   <li class="breakpoint">
     <span class="breakpoint__dot color-dot"
       :style="{ backgroundColor: color }"></span>
-    <span class="breakpoint__info">{{ format }} : {{ size }}</span>
+    <span class="breakpoint__info">{{ niceFormat }} : {{ size }} PX</span>
   </li>
 </template>
 
@@ -13,6 +13,11 @@ export default {
     format: String,
     color: String,
     size: Number
+  },
+  computed: {
+    niceFormat: function () {
+      return this.format.charAt(0).toUpperCase() + this.format.slice(1, this.format.length).toLowerCase()
+    }
   }
 }
 </script>

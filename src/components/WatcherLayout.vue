@@ -10,8 +10,7 @@
                     <ul>
                         <breakpoint
                             v-for="breakpoint in breakpoints" :key="breakpoint.id"
-                            v-bind="breakpoint"
-                            />
+                            v-bind="breakpoint" />
                     </ul>
                 </div>
                 <form 
@@ -48,7 +47,13 @@ export default {
   methods: {
     addNewBreakpoint: function () {
       let breakpoint = this.newBreakpoint
+
       this.breakpoints.push(breakpoint)
+      this.newBreakpoint = {
+        format: '',
+        color: '',
+        size: ''
+      }
     }
   },
   data () {
