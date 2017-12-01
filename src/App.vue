@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <watcher-layout 
+    <layout 
       :currentBreakpoint="currentBreakpoint"
       :breakpoints="orderedBreakpoints"/>
   </div>
 </template>
 
 <script>
-import WatcherLayout from './components/WatcherLayout'
+import Layout from './components/Layout'
 
 const defaultBreakpoint = {
   format: 'Desktop',
@@ -17,7 +17,7 @@ const defaultBreakpoint = {
 export default {
   name: 'app',
   components: {
-    WatcherLayout
+    Layout
   },
   computed: {
     orderedBreakpoints: function () {

@@ -17,14 +17,16 @@
                     v-on:submit.prevent="addNewBreakpoint"
                     class="layout__box layout__box--form">
                     <p>Add a new breakpoint :</p>
-                    <input type="text" 
-                        v-model="newBreakpoint.format"
-                        placeholder="Screen or device format" />
-                    <input type="text" 
-                        v-model.number="newBreakpoint.size"
-                        placeholder="Screen or device size" />
-                    <input type="color"
-                        v-model="newBreakpoint.color" />
+                    <field 
+                        type="text"
+                        placeholder="Screen or device format"
+                        v-model="newBreakpoint.format" />
+                    <field 
+                        type="text"
+                        placeholder="Screen or device size"
+                        v-model.number="newBreakpoint.size" />
+                    <!-- <input type="color"
+                        v-model="newBreakpoint.color" /> -->
                     <button type="submit">Add breakpoint</button>
                 </form>
             </div>
@@ -34,15 +36,17 @@
 
 <script>
 import Breakpoint from '../components/Breakpoint'
+import Field from '../components/Field'
 
 export default {
-  name: 'WatcherLayout',
+  name: 'Layout',
   props: {
     currentBreakpoint: Object,
     breakpoints: Array
   },
   components: {
-    Breakpoint
+    Breakpoint,
+    Field
   },
   methods: {
     addNewBreakpoint: function () {
