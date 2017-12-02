@@ -23,10 +23,6 @@ export default {
       default: 'text'
     },
     placeholder: String,
-    isFocused: {
-      type: Boolean,
-      default: false
-    },
     value: null
   },
   methods: {
@@ -40,6 +36,11 @@ export default {
       if (this.value === '') {
         this.isFocused = false
       }
+    }
+  },
+  data () {
+    return {
+      isFocused: false
     }
   }
 }
