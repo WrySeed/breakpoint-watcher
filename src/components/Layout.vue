@@ -48,6 +48,15 @@ export default {
     Breakpoint,
     Field
   },
+  data () {
+    return {
+      newBreakpoint: {
+        format: '',
+        size: '',
+        color: ''
+      }
+    }
+  },
   methods: {
     addNewBreakpoint: function () {
       let breakpoint = this.newBreakpoint
@@ -57,15 +66,6 @@ export default {
         format: '',
         color: '',
         size: ''
-      }
-    }
-  },
-  data () {
-    return {
-      newBreakpoint: {
-        format: '',
-        size: '',
-        color: ''
       }
     }
   }

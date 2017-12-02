@@ -3,16 +3,27 @@
     <span class="breakpoint__dot color-dot"
       :style="{ backgroundColor: color }"></span>
     <span class="breakpoint__info">{{ niceFormat }} : {{ size }} PX</span>
+    <icon :glyph="closeIcon" />
   </li>
 </template>
 
 <script>
+import Icon from '../components/Icon'
+
+import closeIcon from '../assets/close.svg'
+
 export default {
   name: 'Breakpoint',
   props: {
     format: String,
     color: String,
     size: Number
+  },
+  components: {
+    Icon
+  },
+  data () {
+    return { closeIcon }
   },
   computed: {
     niceFormat: function () {

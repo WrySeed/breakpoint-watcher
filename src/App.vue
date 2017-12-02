@@ -19,6 +19,18 @@ export default {
   components: {
     Layout
   },
+  data () {
+    return {
+      currentBreakpoint: {
+        format: defaultBreakpoint.format,
+        color: defaultBreakpoint.color
+      },
+      breakpoints: [
+        { format: 'mobile', size: 640, color: '#ffee58' },
+        { format: 'tablet', size: 1024, color: '#9ccc65' }
+      ]
+    }
+  },
   computed: {
     orderedBreakpoints: function () {
       return this.breakpoints.sort((a, b) => {
@@ -32,18 +44,6 @@ export default {
 
         return 0
       })
-    }
-  },
-  data () {
-    return {
-      currentBreakpoint: {
-        format: defaultBreakpoint.format,
-        color: defaultBreakpoint.color
-      },
-      breakpoints: [
-        { format: 'mobile', size: 640, color: '#ffee58' },
-        { format: 'tablet', size: 1024, color: '#9ccc65' }
-      ]
     }
   }
 }

@@ -76,7 +76,7 @@ export default {
         left: 50%
         width: 0
         background-color: black
-        transition: all $duration cubic-bezier(0.165, 0.84, 0.44, 1)
+        transition: all $duration $easing
         opacity: 0
         content: ""
 
