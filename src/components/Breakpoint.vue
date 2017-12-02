@@ -89,4 +89,5 @@ export default {
     .icon
       width: 100%
       height: 100%
+      fill: $black-a35
 </style>

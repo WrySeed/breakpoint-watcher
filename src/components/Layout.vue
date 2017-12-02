@@ -15,16 +15,18 @@
                     </ul>
                 </div>
                 <form 
-                    v-on:submit.prevent="addNewBreakpoint"
-                    class="layout__box layout__box--form">
+                    class="layout__box layout__box--form"
+                    v-on:submit.prevent="addNewBreakpoint">
                     <p>Add a new breakpoint :</p>
                     <field 
                         type="text"
                         placeholder="Screen or device format"
+                        :icon="icons.formatSize"
                         v-model="newBreakpoint.format" />
-                    <field 
+                    <field
                         type="text"
                         placeholder="Screen or device size"
+                        :icon="icons.codeTags"
                         v-model.number="newBreakpoint.size" />
                     <!-- <input type="color"
                         v-model="newBreakpoint.color" /> -->
@@ -38,6 +40,9 @@
 <script>
 import Breakpoint from '../components/Breakpoint'
 import Field from '../components/Field'
+
+import formatSizeIcon from '../assets/format-size.svg'
+import codeTagsIcon from '../assets/code-tags.svg'
 
 export default {
   name: 'Layout',
@@ -55,6 +60,10 @@ export default {
         format: '',
         size: '',
         color: ''
+      },
+      icons: {
+        formatSize: formatSizeIcon,
+        codeTags: codeTagsIcon
       }
     }
   },

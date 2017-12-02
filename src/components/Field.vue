@@ -1,7 +1,13 @@
 <template>
   <div 
     class="field"
-    :class="{ 'field--focus': isFocused }">
+    :class="{ 
+      'field--focus': isFocused,
+      'field--has-icon': icon
+    }">
+      <icon 
+        v-if="icon"
+        :glyph="icon" />
       <input 
         ref="input"
         :type="type"
@@ -15,6 +21,8 @@
 </template>
 
 <script>
+import Icon from '../components/Icon'
+
 export default {
   name: 'Field',
   props: {
@@ -23,7 +31,11 @@ export default {
       default: 'text'
     },
     placeholder: String,
-    value: null
+    value: null,
+    icon: Object
+  },
+  components: {
+    Icon
   },
   methods: {
     updateValue: function (value) {
@@ -50,40 +62,56 @@ export default {
 @import "../styles/variables.sass"
 
 .field
-    $root: &
-    position: relative
-    margin-bottom: 13px
-    font-size: 0
-    input
-      width: 100%
-      height: 6rem
-      border: 0 none
-      outline: none
-      font: $main-font
-      &::placeholder
-        color: $black-a35
-        opacity: 1
-    &__border
+  $root: &
+  position: relative
+  margin-bottom: 13px
+  font-size: 0
+  input
+    display: inline-block
+    vertical-align: middle
+    width: 100%
+    height: 6rem
+    border: 0 none
+    outline: none
+    font: $main-font
+    &::placeholder
+      color: $black-a35
+      opacity: 1
+  &__border
+    position: absolute
+    bottom: -3px
+    right: 0
+    width: 100%
+    height: 3px
+    background-color: $black-a15
+    &:after
       position: absolute
-      bottom: -3px
-      right: 0
-      width: 100%
-      height: 3px
-      background-color: $black-a15
-      &:after
-        position: absolute
-        top: 0
-        bottom: 0
-        left: 50%
-        width: 0
-        background-color: black
-        transition: all $duration $easing
-        opacity: 0
-        content: ""
+      top: 0
+      bottom: 0
+      left: 50%
+      width: 0
+      background-color: black
+      transition: all $duration $easing
+      opacity: 0
+      content: ""
 
-    &--focus
-      #{$root}__border::after
-        left: 0
-        width: 100%
-        opacity: 1
+  &--has-icon
+    .icon
+      display: inline-block
+      vertical-align: middle
+      width: 3.6rem
+      height: 3.6rem
+      margin: 1.2rem
+      fill: $black-a35
+    input,
+    #{$root}__border
+      width: calc(100% - 6.2rem)
+
+  &--focus
+    .icon
+      fill: black
+    #{$root}__border::after
+      left: 0
+      width: 100%
+      opacity: 1
 </style>
