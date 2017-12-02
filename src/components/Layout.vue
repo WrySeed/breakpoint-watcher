@@ -10,7 +10,8 @@
                     <ul>
                         <breakpoint
                             v-for="breakpoint in breakpoints" :key="breakpoint.id"
-                            v-bind="breakpoint" />
+                            v-bind="breakpoint"
+                            v-on:delete="deleteBreakpoint(breakpoint)" />
                     </ul>
                 </div>
                 <form 
@@ -67,6 +68,9 @@ export default {
         color: '',
         size: ''
       }
+    },
+    deleteBreakpoint: function (breakpoint) {
+      this.breakpoints.splice(this.breakpoints.indexOf(breakpoint), 1)
     }
   }
 }

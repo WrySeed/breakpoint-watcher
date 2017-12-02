@@ -3,7 +3,11 @@
     <span class="breakpoint__dot color-dot"
       :style="{ backgroundColor: color }"></span>
     <span class="breakpoint__info">{{ niceFormat }} : {{ size }} PX</span>
-    <icon :glyph="closeIcon" />
+    <button
+      class="breakpoint__delete"
+      v-on:click="remove">
+      <icon :glyph="closeIcon" />
+    </button>
   </li>
 </template>
 
@@ -28,6 +32,11 @@ export default {
   computed: {
     niceFormat: function () {
       return this.format.charAt(0).toUpperCase() + this.format.slice(1, this.format.length).toLowerCase()
+    }
+  },
+  methods: {
+    remove: function () {
+      this.$emit('delete')
     }
   }
 }
@@ -59,11 +68,25 @@ export default {
 .breakpoint
   color: $black-a75
   border-bottom: 1px solid $black-a15
+  font-size: 0
   line-height: 6rem
-  &__dot
-    margin-right: 1.6rem
   &__info
     display: inline-block
     vertical-align: middle
-    max-width: calc(100% - 5rem)
+    width: calc(100% - 9.2rem)
+    padding: 0 1.6rem
+    font-size: 1.6rem
+  &__delete
+    display: inline-block
+    vertical-align: middle
+    width: 3rem
+    height: 3rem
+    padding: 0
+    background: transparent
+    border: 0 none
+    outline: none
+    cursor: pointer
+    .icon
+      width: 100%
+      height: 100%
 </style>
