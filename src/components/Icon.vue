@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import "../styles/variables.sass"
+@import "../styles/variables"
 
 .icon
   fill: black

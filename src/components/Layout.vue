@@ -30,7 +30,9 @@
                         v-model.number="newBreakpoint.size" />
                     <!-- <input type="color"
                         v-model="newBreakpoint.color" /> -->
-                    <button type="submit">Add breakpoint</button>
+                    <div class="layout__box__footer">
+                        <flex-button wording="Add breakpoint" />
+                    </div>
                 </form>
             </div>
         </div>
@@ -40,6 +42,7 @@
 <script>
 import Breakpoint from '../components/Breakpoint'
 import Field from '../components/Field'
+import FlexButton from '../components/FlexButton'
 
 import formatSizeIcon from '../assets/format-size.svg'
 import codeTagsIcon from '../assets/code-tags.svg'
@@ -52,7 +55,8 @@ export default {
   },
   components: {
     Breakpoint,
-    Field
+    Field,
+    FlexButton
   },
   data () {
     return {
@@ -86,7 +90,7 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-@import "../styles/variables.sass"
+@import "../styles/variables"
 
 .layout
     display: table-cell
@@ -105,4 +109,8 @@ export default {
         margin-bottom: 1.6rem
         p
             font-size: 1.8rem
+        &__footer
+            @extend %clearfix
+            .flex-button
+                float: right
 </style>
