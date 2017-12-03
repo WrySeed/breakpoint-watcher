@@ -1,7 +1,6 @@
 <template>
   <li class="breakpoint">
-    <span class="breakpoint__dot color-dot"
-      :style="{ backgroundColor: color }"></span>
+    <color-dot :color="color" class="breakpoint__dot" />
     <span class="breakpoint__info">{{ niceFormat }} : {{ size }} PX</span>
     <button
       class="breakpoint__delete"
@@ -13,6 +12,7 @@
 
 <script>
 import Icon from '../components/Icon'
+import ColorDot from '../components/ColorDot'
 
 import closeIcon from '../assets/close.svg'
 
@@ -24,7 +24,8 @@ export default {
     size: Number
   },
   components: {
-    Icon
+    Icon,
+    ColorDot
   },
   data () {
     return { closeIcon }
@@ -45,24 +46,6 @@ export default {
 <style lang="sass" scoped>
 @import "../styles/variables"
 
-.color-dot
-  position: relative
-  width: 3rem
-  height: 3rem
-  border: 1px solid #d9d9d9
-  border-radius: 50%
-  box-sizing: border-box
-  &:after
-    position: absolute
-    top: 0
-    bottom: 0
-    right: 0
-    left: 0
-    background-color: transparent
-    border: 2px solid white
-    border-radius: 50%
-    content: ""
-
 .breakpoint
   display: flex
   align-items: center
@@ -70,7 +53,7 @@ export default {
   border-bottom: 1px solid $black-a15
   font-size: 0
   line-height: 6rem
-  .color-dot
+  &__dot
     flex: intial
   &__info
     flex: auto

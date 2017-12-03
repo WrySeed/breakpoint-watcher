@@ -29,7 +29,7 @@ export default {
 
 .flex-button
   position: relative
-  padding: 1.8rem 2rem
+  padding: 1.6rem 2rem
   margin: 0
   background: transparent
   border: 0 none
@@ -47,7 +47,7 @@ export default {
     position: relative
     display: block
     color: white
-    font: normal 2rem $roboto
+    font: normal 1.8rem $roboto
     text-transform: uppercase
     z-index: 20
 </style>
