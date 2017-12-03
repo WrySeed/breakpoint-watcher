@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import Config from '../config'
 import Breakpoint from '../components/Breakpoint'
 import Field from '../components/Field'
 import FlexButton from '../components/FlexButton'
@@ -81,17 +82,33 @@ export default {
     addNewBreakpoint: function () {
       let breakpoint = this.newBreakpoint
 
-      this.breakpoints.push(breakpoint)
-      this.newBreakpoint = {
-        format: '',
-        color: '',
-        size: ''
+      try {
+        if (breakpoint.format === '') {
+          throw new Error('Please give your new breakpoint a name.')
+        }
+
+        if (typeof breakpoint.size !== 'number') {
+          throw new Error('Please use a number to define your new breakpoint.')
+        }
+
+        if (breakpoint.size > Config.maximumDeviceSize || breakpoint.size < Config.minimumDeviceSize) {
+          throw new Error(`Please use a valid size for your new breakpoint, minimum is ${Config.minimumDeviceSize}px and maximum ${Config.maximumDeviceSize}px.`)
+        }
+
+        this.breakpoints.push(breakpoint)
+        this.newBreakpoint = {
+          format: '',
+          color: '',
+          size: ''
+        }
+        this.$emit('checkSize')
+      } catch (e) {
+        this.$emit('error', e.message)
       }
-      this.$parent.checkAppSize()
     },
     deleteBreakpoint: function (breakpoint) {
       this.breakpoints.splice(this.breakpoints.indexOf(breakpoint), 1)
-      this.$parent.checkAppSize()
+      this.$emit('checkSize')
     }
   }
 }

@@ -1,8 +1,7 @@
 <template>
   <div 
     class="field"
-    :class="{ 
-      'field--focus': isFocused,
+    :class="{
       'field--has-icon': icon
     }">
       <icon 
@@ -13,9 +12,7 @@
         :type="type"
         :placeholder="placeholder"
         :value="value"
-        v-on:input="updateValue($event.target.value)"
-        v-on:focus="testFocus()"
-        v-on:blur="testBlur()">
+        v-on:input="updateValue($event.target.value)">
       <span class="field__border"></span>
   </div>
 </template>
@@ -40,19 +37,6 @@ export default {
   methods: {
     updateValue: function (value) {
       this.$emit('input', value)
-    },
-    testFocus: function () {
-      this.isFocused = true
-    },
-    testBlur: function () {
-      if (this.value === '') {
-        this.isFocused = false
-      }
-    }
-  },
-  data () {
-    return {
-      isFocused: false
     }
   }
 }
@@ -104,12 +88,4 @@ export default {
       fill: $black-a35
     #{$root}__border
       width: calc(100% - 6.2rem)
-
-  &--focus
-    .icon
-      fill: black
-    #{$root}__border::after
-      left: 0
-      width: 100%
-      opacity: 1
 </style>

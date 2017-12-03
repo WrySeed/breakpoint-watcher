@@ -3,30 +3,31 @@
     <layout 
       :currentBreakpoint="currentBreakpoint"
       :windowWidth="windowWidth"
-      :breakpoints="orderedBreakpoints"/>
+      :breakpoints="orderedBreakpoints"
+      v-on:error="setError"
+      v-on:checkSize="checkAppSize"/>
+    <error 
+      :message="error"
+      v-on:dismiss="setError('')" />
   </div>
 </template>
 
 <script>
+import Config from './config'
 import Layout from './components/Layout'
-
-const defaultBreakpoint = {
-  format: 'Desktop',
-  color: '#ef5350'
-}
+import Error from './components/Error'
 
 export default {
   name: 'app',
   components: {
-    Layout
+    Layout,
+    Error
   },
   data () {
     return {
       windowWidth: 0,
-      currentBreakpoint: {
-        format: defaultBreakpoint.format,
-        color: defaultBreakpoint.color
-      },
+      error: '',
+      currentBreakpoint: Config.defaultBreakpoint,
       breakpoints: [
         { format: 'mobile', size: 640, color: '#ffee58' },
         { format: 'tablet', size: 1024, color: '#9ccc65' }
@@ -52,8 +53,8 @@ export default {
     checkAppSize: function () {
       this.windowWidth = document.documentElement.clientWidth
       let currentBreakpoint = {
-        format: defaultBreakpoint.format,
-        color: defaultBreakpoint.color
+        format: Config.defaultBreakpoint.format,
+        color: Config.defaultBreakpoint.color
       }
 
       for (let breakpoint of this.breakpoints) {
@@ -64,6 +65,9 @@ export default {
       }
 
       this.currentBreakpoint = currentBreakpoint
+    },
+    setError: function (e) {
+      this.error = e
     }
   },
   mounted: function () {

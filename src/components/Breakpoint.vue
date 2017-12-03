@@ -53,14 +53,11 @@ export default {
   border-bottom: 1px solid $black-a15
   font-size: 0
   line-height: 6rem
-  &__dot
-    flex: intial
   &__info
     flex: auto
     padding: 0 1.6rem
     font-size: 1.6rem
   &__delete
-    flex: intial
     width: 3rem
     height: 3rem
     padding: 0
