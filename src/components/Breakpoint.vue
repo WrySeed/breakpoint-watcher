@@ -47,8 +47,6 @@ export default {
 
 .color-dot
   position: relative
-  display: inline-block
-  vertical-align: middle
   width: 3rem
   height: 3rem
   border: 1px solid #d9d9d9
@@ -66,19 +64,20 @@ export default {
     content: ""
 
 .breakpoint
+  display: flex
+  align-items: center
   color: $black-a75
   border-bottom: 1px solid $black-a15
   font-size: 0
   line-height: 6rem
+  .color-dot
+    flex: intial
   &__info
-    display: inline-block
-    vertical-align: middle
-    width: calc(100% - 9.2rem)
+    flex: auto
     padding: 0 1.6rem
     font-size: 1.6rem
   &__delete
-    display: inline-block
-    vertical-align: middle
+    flex: intial
     width: 3rem
     height: 3rem
     padding: 0

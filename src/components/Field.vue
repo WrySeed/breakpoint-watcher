@@ -64,12 +64,12 @@ export default {
 .field
   $root: &
   position: relative
+  display: flex
+  align-items: center
   margin-bottom: 13px
   font-size: 0
   input
-    display: inline-block
-    vertical-align: middle
-    width: 100%
+    flex: auto
     height: 6rem
     border: 0 none
     outline: none
@@ -97,13 +97,11 @@ export default {
 
   &--has-icon
     .icon
-      display: inline-block
-      vertical-align: middle
+      flex: initial
       width: 3.6rem
       height: 3.6rem
       margin: 1.2rem
       fill: $black-a35
-    input,
     #{$root}__border
       width: calc(100% - 6.2rem)
 
