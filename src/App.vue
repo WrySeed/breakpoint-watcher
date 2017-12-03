@@ -2,6 +2,7 @@
   <div id="app">
     <layout 
       :currentBreakpoint="currentBreakpoint"
+      :windowWidth="windowWidth"
       :breakpoints="orderedBreakpoints"/>
   </div>
 </template>
@@ -21,6 +22,7 @@ export default {
   },
   data () {
     return {
+      windowWidth: 0,
       currentBreakpoint: {
         format: defaultBreakpoint.format,
         color: defaultBreakpoint.color
@@ -45,6 +47,30 @@ export default {
         return 0
       })
     }
+  },
+  methods: {
+    checkAppSize: function () {
+      this.windowWidth = document.documentElement.clientWidth
+      let currentBreakpoint = {
+        format: defaultBreakpoint.format,
+        color: defaultBreakpoint.color
+      }
+
+      for (let breakpoint of this.breakpoints) {
+        if (this.windowWidth <= breakpoint.size) {
+          currentBreakpoint.format = breakpoint.format
+          currentBreakpoint.color = breakpoint.color
+        }
+      }
+
+      this.currentBreakpoint = currentBreakpoint
+    }
+  },
+  mounted: function () {
+    this.$nextTick(() => {
+      window.addEventListener('resize', this.checkAppSize)
+      this.checkAppSize()
+    })
   }
 }
 </script>

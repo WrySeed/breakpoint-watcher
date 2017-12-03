@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     niceFormat: function () {
-      return this.format.charAt(0).toUpperCase() + this.format.slice(1, this.format.length).toLowerCase()
+      return this.format.charAt(0).toUpperCase() + this.format.slice(1).toLowerCase()
     }
   },
   methods: {

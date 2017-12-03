@@ -3,7 +3,7 @@
         <div class="layout__column">
             <h1 
                 class="layout__title"
-                :style="{ backgroundColor: currentBreakpoint.color }">{{ currentBreakpoint.format }}</h1>
+                :style="{ backgroundColor: currentBreakpoint.color }">{{ windowStatus }}</h1>
             <div class="layout__inner">
                 <div class="layout__box layout__box--list">
                     <p>Your defined breakpoints :</p>
@@ -51,7 +51,8 @@ export default {
   name: 'Layout',
   props: {
     currentBreakpoint: Object,
-    breakpoints: Array
+    breakpoints: Array,
+    windowWidth: Number
   },
   components: {
     Breakpoint,
@@ -71,6 +72,11 @@ export default {
       }
     }
   },
+  computed: {
+    windowStatus: function () {
+      return `${this.currentBreakpoint.format.charAt(0).toUpperCase() + this.currentBreakpoint.format.slice(1).toLowerCase()} : ${this.windowWidth} PX`
+    }
+  },
   methods: {
     addNewBreakpoint: function () {
       let breakpoint = this.newBreakpoint
@@ -81,9 +87,11 @@ export default {
         color: '',
         size: ''
       }
+      this.$parent.checkAppSize()
     },
     deleteBreakpoint: function (breakpoint) {
       this.breakpoints.splice(this.breakpoints.indexOf(breakpoint), 1)
+      this.$parent.checkAppSize()
     }
   }
 }
