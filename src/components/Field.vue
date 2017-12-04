@@ -1,19 +1,17 @@
 <template>
   <div 
     class="field"
-    :class="{
-      'field--has-icon': icon
-    }">
-      <icon 
-        v-if="icon"
-        :glyph="icon" />
-      <input 
-        ref="input"
-        :type="type"
-        :placeholder="placeholder"
-        :value="value"
-        v-on:input="updateValue($event.target.value)">
-      <span class="field__border"></span>
+    :class="{ 'field--has-icon': icon }">
+    <icon 
+      v-if="icon"
+      :glyph="icon" />
+    <input 
+      ref="input"
+      :type="type"
+      :placeholder="placeholder"
+      :value="value"
+      v-on:input="updateValue($event.target.value)">
+    <span class="field__border"></span>
   </div>
 </template>
 

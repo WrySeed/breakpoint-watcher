@@ -1,6 +1,7 @@
 <template>
-  <span class="color-dot"
-      :style="{ backgroundColor: color }"></span>  
+  <span 
+    class="color-dot"
+    :style="{ backgroundColor: color }"></span>  
 </template>
 
 <script>
