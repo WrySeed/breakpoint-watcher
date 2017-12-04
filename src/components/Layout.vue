@@ -3,7 +3,9 @@
     <div class="layout__column">
       <h1 
         class="layout__title"
-        :style="{ backgroundColor: currentBreakpoint.color }">{{ windowStatus }}</h1>
+        :style="{
+          backgroundColor: currentBreakpoint.color,
+          color: breakpointWordColor }">{{ windowStatus }}</h1>
       <div class="layout__inner">
         <div class="layout__box layout__box--list">
           <p>Your defined breakpoints :</p>
@@ -74,6 +76,14 @@ export default {
   computed: {
     windowStatus: function () {
       return `${this.currentBreakpoint.format.charAt(0).toUpperCase() + this.currentBreakpoint.format.slice(1).toLowerCase()} : ${this.windowWidth} PX`
+    },
+    breakpointWordColor: function () {
+      let color = this.currentBreakpoint.color.substring(1)
+      let r = parseInt(color.substr(0, 2), 16)
+      let g = parseInt(color.substr(2, 2), 16)
+      let b = parseInt(color.substr(4, 2), 16)
+
+      return (((r * 0.299) + (g * 0.587) + (b * 0.114)) > 186) ? 'black' : 'white'
     }
   },
   methods: {
@@ -93,6 +103,7 @@ export default {
           throw new Error(`Please use a valid size for your new breakpoint, minimum is ${Config.minimumDeviceSize}px and maximum ${Config.maximumDeviceSize}px.`)
         }
 
+        breakpoint.color = '#' + Math.floor(Math.random() * 16777215).toString(16)
         this.breakpoints.push(breakpoint)
         this.newBreakpoint = {
           format: '',
