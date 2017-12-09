@@ -47,7 +47,7 @@ export default {
     position: relative
     display: block
     color: white
-    font: normal 1.8rem $roboto
+    font: normal 1.6rem $roboto
     text-transform: uppercase
     z-index: 20
 </style>

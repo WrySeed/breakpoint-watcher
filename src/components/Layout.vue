@@ -135,16 +135,22 @@ export default {
     background-color: white
     box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .35)
   &__inner
-    padding: 1.6rem
+    padding: 2rem
   &__title
-    padding: 2.2rem
-    font-size: 2rem
+    padding: 2rem
+    font-size: 1.8rem
   &__box
-    margin-bottom: 1.6rem
+    margin-bottom: 3rem
     p
-      font-size: 1.8rem
+      margin-bottom: .5rem
+      font-size: 1.5rem
     &__footer
+      margin: 2rem 0 1rem
       @extend %clearfix
       .flex-button
         float: right
+    &--form
+      margin-bottom: 0 
+      p
+        margin-bottom: 1rem
 </style>

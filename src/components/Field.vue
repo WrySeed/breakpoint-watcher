@@ -48,11 +48,11 @@ export default {
   position: relative
   display: flex
   align-items: center
-  margin-bottom: 13px
+  margin-bottom: 1.5rem
   font-size: 0
   input
     flex: auto
-    height: 6rem
+    height: 4.4rem
     border: 0 none
     outline: none
     font: $main-font
@@ -80,10 +80,10 @@ export default {
   &--has-icon
     .icon
       flex: initial
-      width: 3.6rem
-      height: 3.6rem
-      margin: 1.2rem
+      width: 3rem
+      height: 3rem
+      margin: .7rem
       fill: $black-a35
     #{$root}__border
-      width: calc(100% - 6.2rem)
+      width: calc(100% - 4.4rem)
 </style>

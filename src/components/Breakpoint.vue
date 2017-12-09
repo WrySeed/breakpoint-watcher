@@ -58,8 +58,8 @@ export default {
     padding: 0 1.6rem
     font-size: 1.6rem
   &__delete
-    width: 3rem
-    height: 3rem
+    width: 2.4rem
+    height: 2.4rem
     padding: 0
     background: transparent
     border: 0 none
