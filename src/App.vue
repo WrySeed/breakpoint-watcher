@@ -1,27 +1,36 @@
 <template>
   <div id="app">
-    <layout 
-      :currentBreakpoint="currentBreakpoint"
-      :windowWidth="windowWidth"
-      :breakpoints="orderedBreakpoints"
-      v-on:error="setError"
-      v-on:checkSize="checkAppSize"/>
-    <error 
-      :message="error"
-      v-on:dismiss="setError('')" />
+    <div class="wrapper">
+      <error 
+        :message="error"
+        v-on:dismiss="setError('')" />
+      <layout 
+        :currentBreakpoint="currentBreakpoint"
+        :windowWidth="windowWidth"
+        :breakpoints="orderedBreakpoints"
+        v-on:error="setError"
+        v-on:checkSize="checkAppSize"/>
+    </div>
+    <footer>
+      Made with <a target="_blank" href="https://www.youtube.com/watch?v=WFWrRU1zSYQ" class="icon-link"><icon :glyph="icons.musicCircle" /></a> by <a target="_blank" href="https://github.com/WrySeed">@wryseed</a>
+    </footer>
   </div>
 </template>
 
 <script>
 import Config from './config'
-import Layout from './components/Layout'
 import Error from './components/Error'
+import Layout from './components/Layout'
+import Icon from './components/Icon'
+
+import musicCircle from './assets/music-circle.svg'
 
 export default {
   name: 'app',
   components: {
     Layout,
-    Error
+    Error,
+    Icon
   },
   data () {
     return {
@@ -31,7 +40,10 @@ export default {
       breakpoints: [
         { format: 'mobile', size: 640, color: '#ffee58' },
         { format: 'tablet', size: 1024, color: '#9ccc65' }
-      ]
+      ],
+      icons: {
+        musicCircle
+      }
     }
   },
   computed: {
@@ -87,9 +99,36 @@ html
   font-size: 62.5%
 
 #app
+  font: $main-font
+  background-color: $black-a5
+
+.wrapper
   display: table
   width: 100%
-  height: 100vh
-  background-color: $black-a5
-  font: $main-font
+  height: calc(100vh - 5.1rem)
+
+footer
+  height: 3.6rem
+  margin: 1.5rem 2rem 0
+  padding: 1rem 0
+  color: #7f7f7f
+  border-top: 1px solid $black-a15
+  box-sizing: border-box
+  font-size: 1.1rem
+  line-height: normal
+  text-align: center
+  a
+    color: $ws-red
+    text-decoration: none
+  .icon-link
+    position: relative
+    top: -1px
+    display: inline-block
+    vertical-align: middle
+    font-size: 0
+    line-height: normal
+    .icon--music-circle
+      width: 1.4rem
+      height: 1.4rem
+      fill: $ws-red
 </style>
