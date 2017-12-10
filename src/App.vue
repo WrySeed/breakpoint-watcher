@@ -1,15 +1,17 @@
 <template>
   <div id="app">
     <div class="wrapper">
-      <error 
-        :message="error"
-        v-on:dismiss="setError('')" />
-      <layout 
-        :currentBreakpoint="currentBreakpoint"
-        :windowWidth="windowWidth"
-        :breakpoints="orderedBreakpoints"
-        v-on:error="setError"
-        v-on:checkSize="checkAppSize"/>
+      <div class="content">
+        <error 
+          :message="error"
+          v-on:dismiss="setError('')" />
+        <layout 
+          :currentBreakpoint="currentBreakpoint"
+          :windowWidth="windowWidth"
+          :breakpoints="orderedBreakpoints"
+          v-on:error="setError"
+          v-on:checkSize="checkAppSize"/>
+      </div>
     </div>
     <footer>
       Made with <a target="_blank" href="https://www.youtube.com/watch?v=WFWrRU1zSYQ" class="icon-link"><icon :glyph="icons.musicCircle" /></a> by <a target="_blank" href="https://github.com/WrySeed">@wryseed</a>
@@ -99,13 +101,18 @@ html
   font-size: 62.5%
 
 #app
-  font: $main-font
   background-color: $black-a5
+  font: $main-font
 
 .wrapper
+  min-height: calc(100vh - 5.1rem)
+
+.content
   display: table
   width: 100%
-  height: calc(100vh - 5.1rem)
+  height: calc(100vh - (5.1rem))
+  padding: 5rem 0
+  box-sizing: border-box
 
 footer
   height: 3.6rem
@@ -131,4 +138,12 @@ footer
       width: 1.4rem
       height: 1.4rem
       fill: $ws-red
+
+@media #{$mobile}
+  #app
+    background-color: white
+
+  .content
+    display: block
+    padding: 0
 </style>

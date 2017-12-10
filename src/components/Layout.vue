@@ -153,4 +153,11 @@ export default {
       margin-bottom: 0 
       p
         margin-bottom: 1rem
+
+@media #{$mobile}
+  .layout
+    display: block
+    &__column
+      width: auto
+      box-shadow: none
 </style>
