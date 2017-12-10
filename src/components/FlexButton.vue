@@ -43,6 +43,7 @@ export default {
     height: 100%
     fill: $material-blue
     z-index: 10
+    transition: fill $duration $easing 
   &__wording
     position: relative
     display: block
@@ -50,4 +51,8 @@ export default {
     font: normal 1.6rem $roboto
     text-transform: uppercase
     z-index: 20
+
+  &:hover
+    svg
+      fill: $material-blue--active
 </style>

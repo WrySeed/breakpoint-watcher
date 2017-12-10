@@ -26,6 +26,5 @@ export default {
 @import "../styles/variables"
 
 .icon
-  fill: black
   transition: all $duration $easing
 </style>

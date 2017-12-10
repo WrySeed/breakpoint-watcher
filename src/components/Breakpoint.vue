@@ -53,6 +53,7 @@ export default {
   border-bottom: 1px solid $black-a15
   font-size: 0
   line-height: 6rem
+  transition: all $duration $easing
   &__info
     flex: auto
     padding: 0 1.6rem

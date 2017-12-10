@@ -9,12 +9,19 @@
       <div class="layout__inner">
         <div class="layout__box layout__box--list">
           <p>Your defined breakpoints :</p>
-          <ul>
-            <breakpoint
-              v-for="breakpoint in breakpoints" :key="breakpoint.id"
-              v-bind="breakpoint"
-              v-on:delete="deleteBreakpoint(breakpoint)" />
-          </ul>
+          <transition name="breakpoints-fade" mode="out-in">
+            <transition-group 
+              v-if="breakpoints.length > 0"
+              name="breakpoint"
+              class="breakpoints"
+              tag="ul">
+              <breakpoint
+                v-for="breakpoint in breakpoints" :key="breakpoint.size"
+                v-bind="breakpoint"
+                v-on:delete="deleteBreakpoint(breakpoint)" />
+            </transition-group>
+            <p v-else class="warning">There are no breakpoints yet.</p>
+          </transition>
         </div>
         <form 
           class="layout__box layout__box--form"
@@ -126,6 +133,13 @@ export default {
 <style lang="sass" scoped>
 @import "../styles/variables"
 
+.warning
+  margin: 1rem 0 0
+  color: $warning
+
+.breakpoints
+  position: relative
+
 .layout
   display: table-cell
   vertical-align: middle
@@ -153,6 +167,25 @@ export default {
       margin-bottom: 0 
       p
         margin-bottom: 1rem
+
+.breakpoints-fade-enter-active,
+.breakpoints-fade-leave-active
+  transition: opacity $duration $easing
+
+.breakpoints-fade-enter,
+.breakpoints-fade-leave-to
+  opacity: 0
+
+.breakpoint-move
+  transform: transition $duration
+.breakpoint-enter
+  opacity: 0
+  transform: translateX(-3rem)
+.breakpoint-leave-to
+  opacity: 0
+.breakpoint-leave-active
+  position: absolute
+  width: 100%
 
 @media #{$mobile}
   .layout

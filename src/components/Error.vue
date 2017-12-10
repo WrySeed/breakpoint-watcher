@@ -1,17 +1,19 @@
 <template>
-  <div v-if="message" class="error">
-    <div class="error__modal">
-      <div class="error__modal__content">
-        <icon class="error__modal__content__icon" :glyph="icons.alertIcon" />
-        <p>{{ message }}</p>
-        <button
-          class="error__close"
-          v-on:click="closeModal">
-          <icon :glyph="icons.closeIcon" />
-        </button>
+  <transition name="error-modal">
+    <div v-if="message" class="error">
+      <div class="error__modal">
+        <div class="error__modal__content">
+          <icon class="error__modal__content__icon" :glyph="icons.alertIcon" />
+          <p>{{ message }}</p>
+          <button
+            class="error__close"
+            v-on:click="closeModal">
+            <icon :glyph="icons.closeIcon" />
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -55,6 +57,7 @@ export default {
   width: 100%
   height: 100%
   background-color: rgba(0, 0, 0, .35)
+  transition: all $duration $easing
   z-index: 666
   &__modal
     display: table-cell
@@ -89,5 +92,10 @@ export default {
       width: 100%
       height: 100%
       fill: white
+
+.error-modal-enter,
+.error-modal-leave-to
+  opacity: 0
+  
 </style>
 
