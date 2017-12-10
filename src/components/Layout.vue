@@ -110,6 +110,10 @@ export default {
           throw new Error(`Please use a valid size for your new breakpoint, minimum is ${Config.minimumDeviceSize}px and maximum ${Config.maximumDeviceSize}px.`)
         }
 
+        if (this.breakpoints.filter(e => e.size === breakpoint.size).length > 0) {
+          throw new Error(`A breakpoint with size size ( ${breakpoint.size} PX ) is already defined. Pick another one !`)
+        }
+
         breakpoint.color = '#' + Math.floor(Math.random() * 16777215).toString(16)
         this.breakpoints.push(breakpoint)
         this.newBreakpoint = {
