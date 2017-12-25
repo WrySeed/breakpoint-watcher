@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <ocean :color="currentBreakpoint.color" />
     <div class="wrapper">
       <div class="content">
         <error 
@@ -24,6 +25,7 @@ import Config from './config'
 import Error from './components/Error'
 import Layout from './components/Layout'
 import Icon from './components/Icon'
+import Ocean from './components/Ocean'
 
 import musicCircle from './assets/music-circle.svg'
 
@@ -32,7 +34,8 @@ export default {
   components: {
     Layout,
     Error,
-    Icon
+    Icon,
+    Ocean
   },
   data () {
     return {
@@ -105,7 +108,9 @@ html
   font: $main-font
 
 .wrapper
+  position: relative
   min-height: calc(100vh - 5.1rem)
+  z-index: 20
 
 .content
   display: table
@@ -115,6 +120,7 @@ html
   box-sizing: border-box
 
 footer
+  position: relative
   height: 3.6rem
   margin: 1.5rem 2rem 0
   padding: 1rem 0
@@ -124,6 +130,7 @@ footer
   font-size: 1.1rem
   line-height: normal
   text-align: center
+  z-index: 20
   a
     color: $ws-red
     text-decoration: none
