@@ -20,7 +20,7 @@ export default {
   data () {
     return {
       scene: new THREE.Scene(),
-      camera: new THREE.PerspectiveCamera(Config.fov, window.innerWidth / window.innerHeight, 0.1, 1000),
+      camera: new THREE.PerspectiveCamera(Config.fov, document.body.clientWidth / document.body.clientHeight, 0.1, 1000),
       renderer: new THREE.WebGLRenderer({ antialias: true }),
       light: new THREE.DirectionalLight(0xffffff, 0.75),
       ocean: new Ocean(Config.geometry, Config.material, this.color)
@@ -36,17 +36,15 @@ export default {
       this.renderer.render(this.scene, this.camera)
     },
     resize: function () {
-      this.$nextTick(() => {
-        let width = window.innerWidth
-        let height = window.innerHeight
+      let width = document.body.clientWidth
+      let height = document.body.clientHeight
 
-        this.ocean.setColor(this.color)
+      this.ocean.setColor(this.color)
 
-        this.camera.aspect = width / height
-        this.camera.updateProjectionMatrix()
+      this.camera.aspect = width / height
+      this.camera.updateProjectionMatrix()
 
-        this.renderer.setSize(width, height)
-      })
+      this.renderer.setSize(width, height)
     }
   },
   mounted: function () {
@@ -66,6 +64,8 @@ export default {
 </script>
 
 <style lang="sass">
+  @import "../styles/variables"
+
   #background
     position: absolute
     top: 0
@@ -75,7 +75,11 @@ export default {
     margin: 0
     overflow: hidden
     canvas
-      width: 100%
+      width: 100% !important
       height: 100%
+
+  @media #{$mobile}
+    #background
+      display: none
 </style>
 
