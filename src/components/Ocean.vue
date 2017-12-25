@@ -28,7 +28,7 @@ export default {
   },
   methods: {
     render: function () {
-      window.addEventListener('resize', this.resize)
+      window.addEventListener('resize', this.resize, false)
 
       this.ocean.moveWaves()
 
@@ -42,9 +42,10 @@ export default {
 
         this.ocean.setColor(this.color)
 
-        this.renderer.setSize(width, height)
         this.camera.aspect = width / height
         this.camera.updateProjectionMatrix()
+
+        this.renderer.setSize(width, height)
       })
     }
   },
@@ -64,7 +65,7 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
   #background
     position: absolute
     top: 0
@@ -73,5 +74,8 @@ export default {
     height: 100%
     margin: 0
     overflow: hidden
+    canvas
+      width: 100%
+      height: 100%
 </style>
 

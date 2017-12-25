@@ -104,6 +104,7 @@ html
   font-size: 62.5%
 
 #app
+  position: relative
   background-color: $black-a5
   font: $main-font
 
@@ -122,10 +123,10 @@ html
 footer
   position: relative
   height: 3.6rem
-  margin: 1.5rem 2rem 0
+  margin: 1.5rem 0 0
   padding: 1rem 0
   color: #7f7f7f
-  border-top: 1px solid $black-a15
+  background-color: rgba(255, 255, 255, .75)
   box-sizing: border-box
   font-size: 1.1rem
   line-height: normal
